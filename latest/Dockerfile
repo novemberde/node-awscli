@@ -1,5 +1,5 @@
 
-FROM node
+FROM circleci/node
 
 RUN apt-get update -y && \
      apt-get upgrade -y && \
