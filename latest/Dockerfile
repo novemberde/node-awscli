@@ -1,8 +1,9 @@
 
-FROM circleci/node
+FROM ubuntu
 
 RUN apt-get update -y && \
      apt-get upgrade -y && \
+     apt-get install -y nodejs && \
      apt-get install -y build-essential git curl python-dev
 
 # Install latest version of pip
