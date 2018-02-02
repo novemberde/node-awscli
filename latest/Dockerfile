@@ -48,4 +48,7 @@ RUN curl -O https://bootstrap.pypa.io/get-pip.py && python get-pip.py
 # Install AWS CLI
 RUN pip install awscli awsebcli
 
+# Install serverless globally
+RUN npm i -g serverless
+
 CMD ["/bin/bash"]
