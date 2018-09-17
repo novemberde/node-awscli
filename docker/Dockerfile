@@ -1,20 +1,17 @@
 
-FROM novemberde/node-awscli
+FROM docker:stable
 
 # Install Docker
-RUN apt-get update -y && \
-    apt-get install -y \
-    apt-transport-https \
-    ca-certificates \
-    curl \
-    software-properties-common && \
-    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - && \
-    add-apt-repository \
-    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-    $(lsb_release -cs) \
-    stable" && \
-    apt-get update -y && \
-    apt-get install docker-ce -y && \
-    usermod -aG docker $(whoami)
+RUN apk update && apk add nodejs
+RUN apk -v --update add \
+        python \
+        py-pip \
+        groff \
+        less \
+        mailcap \
+        && \
+    pip install --upgrade awscli==1.14.5 s3cmd==2.0.1 python-magic && \
+    apk -v --purge del py-pip && \
+    rm /var/cache/apk/*
 
-CMD ["/bin/bash"]
+CMD ["sh"]
