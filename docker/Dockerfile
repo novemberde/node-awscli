@@ -3,6 +3,7 @@ FROM docker:stable
 
 # Install Docker
 RUN apk update && apk add nodejs
+RUN apk update && apk add --virtual build-dependencies build-base gcc wget git
 RUN apk -v --update add \
         python \
         py-pip \
