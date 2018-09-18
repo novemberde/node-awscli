@@ -1,9 +1,9 @@
 
-FROM docker:17.05.0-ce-git
+FROM docker:stable
 
 # Install Docker
-RUN apk update && apk add nodejs nodejs-npm
-RUN apk update && apk add --virtual build-dependencies build-base gcc wget git
+RUN apk update && apk add --update nodejs nodejs-npm
+RUN apk add --virtual build-dependencies build-base gcc wget git
 RUN apk -v --update add \
         python \
         py-pip \
@@ -15,5 +15,5 @@ RUN apk -v --update add \
     apk -v --purge del py-pip && \
     rm /var/cache/apk/*
 
-ENTRYPOINT ["docker-entrypoint.sh"]
+ENTRYPOINT []
 CMD ["sh"]
