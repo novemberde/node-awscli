@@ -14,6 +14,7 @@ RUN apk -v --update add \
     apk -v --purge del py-pip && \
     rm /var/cache/apk/*
 
+RUN apk update && apk add bash
 RUN npm i -g node-gyp
 
 ENTRYPOINT []
