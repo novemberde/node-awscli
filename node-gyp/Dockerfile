@@ -1,5 +1,4 @@
-
-FROM node:8.12.0-alpine
+FROM docker:stable
 
 # Install Docker
 RUN apk add --virtual build-dependencies build-base gcc wget git
@@ -15,6 +14,8 @@ RUN apk -v --update add \
     rm /var/cache/apk/*
 
 RUN apk update && apk add bash
+RUN apk update && apk add --update nodejs nodejs-npm
+RUN npm i -g npm
 RUN npm i -g node-gyp
 
 ENTRYPOINT []
