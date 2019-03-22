@@ -1,4 +1,5 @@
-FROM docker:stable
+
+FROM node:8.12.0-alpine
 
 # Install Docker
 RUN apk add --virtual build-dependencies build-base gcc wget git
@@ -13,10 +14,8 @@ RUN apk -v --update add \
     apk -v --purge del py-pip && \
     rm /var/cache/apk/*
 
-RUN apk update && apk add bash
-RUN apk update && apk add --update nodejs nodejs-npm
-RUN npm i -g npm
-RUN npm i -g node-gyp
+RUN npm i -g npm node-gyp
+RUN npm i -g npm vue-cli
 
 ENTRYPOINT []
 CMD ["sh"]
